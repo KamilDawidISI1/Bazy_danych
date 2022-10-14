@@ -23,3 +23,12 @@ Kandydaci:
 -login -> użytkownik
 -hasło -> użytkownik
 -email -> użytkownik
+
+
+workers:
+-id
+-name
+-surname
+-email
+-phone_number
+-position
