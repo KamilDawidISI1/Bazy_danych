@@ -1,0 +1,25 @@
+Schemat 1 Elektroniczny dziennik  
+historia 1 - rejestracja użytkownika  
+= użytkownik otwiera stronę rejestracji
+= użytkownik wypełnia formularz podając wymagane dane, rejestracja jest weryfikowana przez potwierdzenie emaila
+
+historia 2 - logowanie
+= użytkownik podaje nazwę i hasło w formularzu
+
+historia 3 - co robi w aplikacji
+= użytkownik może sprawdzić oceny
+= użytkownik ma dostęp do kalendarza z terminami (uczeń)
+= użytkownik może komunikować się z nauczycielami
+
+Kandydaci:
+-użytkownik +
+    -rejestracja + (*może podgrupa użytkownicy)
+-strona - 
+-formularz -
+-uczeń +
+-nauczyciel +
+-kalendarz +
+-oceny +
+-login -> użytkownik
+-hasło -> użytkownik
+-email -> użytkownik
