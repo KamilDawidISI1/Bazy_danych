@@ -1,0 +1,70 @@
+02.12.2022
+
+#1.1
+select avg(waga) from kreatura where rodzaj = 'wiking';
+
+#1.2
+
+select rodzaj, avg(waga) as 'średnia_waga', count(*) as 'ilość' from kreatura group by rodzaj;
+
+
+#1.3
+
+select rodzaj, avg(year(now())-year(dataUr)) from kreatura group by rodzaj;
+
+
+#2.1
+
+select rodzaj, sum(waga) from zasob group by rodzaj;
+
+#2.2
+#having filtr dla kolumn agregowanych po agregacji
+select nazwa, avg(waga) from zasob where ilosc>=4 group by nazwa having avg(waga)>10 ;
+select nazwa, avg(waga) from zasob group by nazwa having avg(waga)>10 and sum(ilosc)>=4 ;
+
+#2.3
+
+select rodzaj, count(nazwa) from zasob group by rodzaj;
+select rodzaj, count(nazwa) from zasob where ilosc>1 group by rodzaj;
+select rodzaj, count(nazwa) from zasob group by rodzaj having sum(ilosc)>1;
+
+
+#3.1
+
+select k.nazwa, e.ilosc, e.idZasobu from kreatura k , ekwipunek e where k.idKreatury = e.idKreatury;
+select k.nazwa, e.ilosc, e.idZasobu from kreatura k inner join ekwipunek e on k.idKreatury = e.idKreatury;
+
+#3.2
+
+select k.nazwa, e.ilosc, z.nazwa from kreatura k inner join ekwipunek e inner join zasob z on z.idZasobu=e.idZasobu on k.idKreatury = e.idKreatury;
+
+#3.3
+select * from kreatura k left join ekwipunek e on k.idKreatury = e.idKreatury where e.idEkwipunku is null;
+#podzapytanie
+select idKreatury from kreatura where idKreatury not in
+(select distinct idKreatury from ekwipunek where idKreatury is not null);
+
+w domu 4.1, 4.2 !!!!!!!!!!!!!!!!!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
