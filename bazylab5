@@ -53,9 +53,33 @@ select * from zasob where rodzaj is not null order by waga asc;
 select * from kreatura order by dataUr limit 5;
 
 
+#4
+#4.1
+
+select distinct nazwa, dataPozyskania from zasob;
+select distinct(rodzaj) from zasob;
+
+#4.2
+#funkcja concat()
+
+select concat(nazwa," - ",rodzaj) as 'nazwa - rodzaj' from kreatura where rodzaj LIKE "wi%";
+
+#4.3
+select nazwa, ilosc * waga, dataPozyskania from zasob where year(dataPozyskania) between 2000 and 2007;
+
+#5
+#5.1
+
+select nazwa, (ilosc*waga)*0.7 as 'netto' , (ilosc*waga)*0.3 as 'odpadki' from zasob where rodzaj = 'jedzenie';
 
 
+#5.2
 
+select * from zasob where rodzaj is null;
+
+#5.3
+
+select distinct(nazwa), rodzaj from zasob where nazwa LIKE "ba%" or nazwa LIKE "%os" order by nazwa asc;
 
 
 
