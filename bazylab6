@@ -46,11 +46,14 @@ select idKreatury from kreatura where idKreatury not in
 
 w domu 4.1, 4.2 !!!!!!!!!!!!!!!!!!!
 
+4.1
+SELECT k.nazwa, z.nazwa, dataUr  FROM wikingowie.zasob z INNER JOIN wikingowie.kreatura k INNER JOIN wikingowie.ekwipunek 
+ON wikingowie.ekwipunek.idKreatury=k.idKreatury ON wikingowie.ekwipunek.idZasobu=z.idZasobu WHERE dataUr LIKE '167%';
 
+4.2
 
-
-
-
+SELECT dataUr, k.nazwa, z.rodzaj FROM wikingowie.kreatura k INNER JOIN wikingowie.ekwipunek e INNER JOIN wikingowie.zasob z 
+ON z.idZasobu=e.idZasobu ON k.idKreatury=e.idKreatury WHERE z.rodzaj='jedzenie' ORDER BY dataUr ASC LIMIT 5; 
 
 
 
