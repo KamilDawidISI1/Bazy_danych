@@ -57,7 +57,34 @@ ON z.idZasobu=e.idZasobu ON k.idKreatury=e.idKreatury where z.rodzaj='jedzenie' 
 
 
 
+#4.3
 
+#4.3
+
+select concat(k2.nazwa, ' - ', k1.nazwa) as tak from kreatura k1 join kreatura k2 on k1.idKreatury-5=k2.idKreatury;
+
+#5.1
+
+select k.rodzaj,
+sum(e.ilosc*z.waga)/count(distinct(k.nazwa)) from kreatura k 
+inner join ekwipunek e on k.idKreatury=e.idKreatury 
+inner join zasob z on e.idZasobu=z.idZasobu 
+where k.rodzaj not in ('malpa', 'waz') group by k.rodzaj; 
+
+#5.2
+
+Select k.nazwa, max(k.dataUr) from kreatura k group by k.rodzaj;
+
+Select k.nazwa, min(k.dataUr) from kreatura k group by k.rodzaj;
+
+Select k.nazwa, min(k.dataUr), max(k.dataUr) from kreatura k group by k.rodzaj;
+
+
+#lub użycie union
+
+select nazwa from kreatura where rodzaj = 'wiking'
+union
+select nazwa from kreatura where rodzaj = 'ryba';
 
 
 
