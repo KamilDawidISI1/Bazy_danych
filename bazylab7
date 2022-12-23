@@ -62,6 +62,15 @@ group by k.idKreatury;
 ------------------------------
 zdalne 23.12.2022
 
+#4.1
 Select w.nazwa, length(ew.dziennik) dlugosc from wyprawa w 
 join etapy_wyprawy ew on w.id_wyprawy=ew.idWyprawy 
 group by w.nazwa having dlugosc<400;
+
+#4.2
+Select w.nazwa, ((sum(z.waga*e.ilosc))/(count(distinct(u.id_uczestnika)))) sr_waga from wyprawa w 
+join uczestnicy u on w.id_wyprawy=u.id_wyprawy 
+join ekwipunek e on u.id_uczestnika=e.idKreatury 
+join zasob z on e.idZasobu=z.idZasobu 
+group by w.nazwa;
+
