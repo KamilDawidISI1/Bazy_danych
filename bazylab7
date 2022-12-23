@@ -57,3 +57,11 @@ group by s.id_sektora;
 select k.nazwa, if(count(id_uczestnika)>0, 'bral udzal', 'nie bral udzial') from kreatura k
 left join uczestnicy s on s.id_uczestnika=k.idKreatury
 group by k.idKreatury; 
+
+
+------------------------------
+zdalne 23.12.2022
+
+Select w.nazwa, length(ew.dziennik) dlugosc from wyprawa w 
+join etapy_wyprawy ew on w.id_wyprawy=ew.idWyprawy 
+group by w.nazwa having dlugosc<400;
