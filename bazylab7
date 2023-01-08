@@ -1,5 +1,8 @@
 9.12.2022
 
+xdd
+
+
 
 #lab7
 
@@ -82,6 +85,7 @@ join wyprawa w on u.id_wyprawy=w.id_wyprawy
 join etapy_wyprawy ew on u.id_wyprawy=ew.idWyprawy
 join sektor s on ew.sektor=s.id_sektora
 where s.nazwa = 'Chatka dziadka';
+
 
 
 
