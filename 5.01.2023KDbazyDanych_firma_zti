@@ -1,0 +1,60 @@
+#2.1
+Select p.imie, p.nazwisko, d.nazwa from pracownik p join dzial d on p.dzial=d.id_dzialu;
+#2.2
+Select t.nazwa_towaru, k.nazwa_kategori, sm.ilosc from towar t 
+join kategoria k on t.kategoria=k.id_kategori 
+join stan_magazynowy sm on t.id_towaru=sm.towar 
+order by ilosc desc;
+#2.3
+Select z.* from zamowienie z 
+join status_zamowienia sz on z.status_zamowienia=sz.id_statusu_zamowienia
+where sz.nazwa_statusu_zamowienia='anulowane';
+#2.4
+Select kl.* from klient kl 
+join adres_klienta akl on kl.id_klienta=akl.klient 
+join typ_adresu ta on akl.typ_adresu=ta.id_typu 
+where ta.nazwa = 'podstawowy' and miejscowosc = 'Olsztyn';
+#2.5
+Select jm.nazwa from jednostka_miary jm left join stan_magazynowy sm on jm.id_jednostki=sm.jm
+where towar is null;
+#2.6
+Select z.numer_zamowienia, t.nazwa_towaru, pz.ilosc, pz.cena from zamowienie z 
+join pozycja_zamowienia pz on z.id_zamowienia=pz.zamowienie 
+join towar t on pz.towar=t.id_towaru 
+where z.data_zamowienia between '2018-01-01' and '2018-12-31';
+
+#2.7
+create table towary_full_info 
+(select t.nazwa_towaru, t.cena_zakupu, 
+k.nazwa_kategori ,sm.ilosc, jm.nazwa
+from __firma_zti.towar t
+join __firma_zti.kategoria k ON k.id_kategori=t.kategoria 
+join __firma_zti.stan_magazynowy sm ON sm.towar=t.id_towaru
+join __firma_zti.jednostka_miary jm on sm.jm=jm.id_jednostki);
+
+#2.8
+Select * from pozycja_zamowienia pz 
+inner join (Select id_zamowienia from zamowienie order by data_zamowienia asc limit 5) as z 
+on pz.zamowienie=z.id_zamowienia;
+
+#2.9
+Select z.* from zamowienie z 
+join status_zamowienia sz on z.status_zamowienia=sz.id_statusu_zamowienia 
+where sz.nazwa_statusu_zamowienia != 'zrealizowane';
+
+
+#2.10
+Select * from adres_klienta where kod not LIKE '__-___';
+
+#2.10.1
+Select * from adres_klienta where kod not regexp '[0-9][0-9]-[0-9][0-9][0-9]';
+
+#2.10.2
+Select * from adres_klienta where kod not regexp '[0-9]{2}-[0-9]{3}';
+
+# {n} - dokładnie n razy
+# {n,} - co najmniej n razy
+# {,n} - co najwyżej n razy
+# {n,m} - co najmniej n razy i nie więcej jak m razy
+
+
